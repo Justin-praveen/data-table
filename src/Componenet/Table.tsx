@@ -40,7 +40,9 @@ return(
     <>
     <Grid >
  <DataTable
- title="Game Db"
+ title={
+    <h1> GameDb</h1>
+ }
          columns={columns}
          data={filter}
           pagination

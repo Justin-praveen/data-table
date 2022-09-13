@@ -29,7 +29,8 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon
+  AccordionIcon,
+  useColorMode
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -67,6 +68,8 @@ export default function SidebarWithHeader  ({
 }: {
   children: ReactNode;
 }) {
+
+    const { colorMode, toggleColorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -195,6 +198,8 @@ interface MobileProps extends FlexProps {
 
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+
+    const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -223,12 +228,17 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>
-        <IconButton
+        {/* <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
           icon={<FiBell />}
-        />
+        /> */}
+
+
+<Button onClick={toggleColorMode}>
+        {colorMode === 'light' ? 'Dark' : 'Light'}
+      </Button>
         <Flex alignItems={'center'}>
           {/* <Menu>
             <MenuButton
